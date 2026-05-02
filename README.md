@@ -12,7 +12,7 @@ Extensión de Visual Studio Code para dar soporte básico a archivos BBCode con 
 
 ## Requisitos
 
-- Visual Studio Code `^1.108.1`.
+- Visual Studio Code `^1.75.0`.
 
 ## Instalación
 
