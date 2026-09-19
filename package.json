@@ -1,6 +1,6 @@
 {
   "name": "bbcode-editor",
-  "displayName": "BBCode",
+  "displayName": "BBCode Editor and Preview",
   "description": "BBCode syntax highlighting, automatic bracket pairing, and live preview for Visual Studio Code.",
   "version": "1.0.3",
   "publisher": "gabriel-andreescu",
