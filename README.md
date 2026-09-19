@@ -18,10 +18,10 @@ A Visual Studio Code extension for editing BBCode files, with syntax highlightin
 
 ## Installation
 
-Install [BBCode by Gabriel Andreescu](https://marketplace.visualstudio.com/items?itemName=gabriel-andreescu.bbcode-support) from the Marketplace:
+Install [BBCode by Gabriel Andreescu](https://marketplace.visualstudio.com/items?itemName=gabriel-andreescu.bbcode-editor) from the Marketplace:
 
 ```sh
-code --install-extension gabriel-andreescu.bbcode-support
+code --install-extension gabriel-andreescu.bbcode-editor
 ```
 
 ## Usage
