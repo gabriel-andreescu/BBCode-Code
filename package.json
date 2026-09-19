@@ -1,22 +1,25 @@
 {
   "name": "bbcode-support",
   "displayName": "BBCode",
-  "description": "Extensión de Visual Studio Code para dar soporte básico a archivos BBCode con resaltado de sintaxis y pares de caracteres automáticos.",
+  "description": "BBCode syntax highlighting, automatic bracket pairing, and live preview for Visual Studio Code.",
   "version": "1.0.3",
-  "publisher": "JuanReateguiSolis",
+  "publisher": "gabriel-andreescu",
   "license": "MIT",
   "main": "./extension.js",
+  "scripts": {
+    "test": "node --test"
+  },
   "engines": {
     "vscode": "^1.75.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chijure/BBCode-Code.git"
+    "url": "https://github.com/gabriel-andreescu/BBCode-Code.git"
   },
   "bugs": {
-    "url": "https://github.com/chijure/BBCode-Code/issues"
+    "url": "https://github.com/gabriel-andreescu/BBCode-Code/issues"
   },
-  "homepage": "https://github.com/chijure/BBCode-Code#readme",
+  "homepage": "https://github.com/gabriel-andreescu/BBCode-Code#readme",
   "icon": "images/icon.png",
   "categories": [
     "Programming Languages",
@@ -46,7 +49,11 @@
         "extensions": [
           ".bbcode"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/bbcode-light.svg",
+          "dark": "./images/bbcode-dark.svg"
+        }
       }
     ],
     "grammars": [
@@ -59,16 +66,84 @@
     "commands": [
       {
         "command": "bbcode.preview",
-        "title": "BBCode: Vista previa",
+        "title": "Open Preview to the Side",
+        "category": "BBCode",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "bbcode.reopenAsPreview",
+        "title": "Open as Preview",
+        "category": "BBCode",
+        "icon": "$(preview)"
+      },
+      {
+        "command": "bbcode.reopenAsSource",
+        "title": "Open as Source",
+        "category": "BBCode",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "bbcode.togglePreview",
+        "title": "Toggle Preview",
         "category": "BBCode"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "bbcode.preview",
+        "key": "ctrl+k v",
+        "mac": "cmd+k v",
+        "when": "editorFocus && editorLangId == bbcode && !notebookEditorFocused"
+      },
+      {
+        "command": "bbcode.togglePreview",
+        "key": "shift+ctrl+v",
+        "mac": "shift+cmd+v",
+        "when": "!terminalFocus && ((editorFocus && resourceLangId == bbcode && !notebookEditorFocused) || activeCustomEditorId == 'bbcode.preview.editor')"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "bbcode.preview.editor",
+        "displayName": "BBCode Preview",
+        "priority": "option",
+        "selector": [{ "filenamePattern": "*.bbcode" }]
       }
     ],
     "menus": {
       "editor/title": [
         {
           "command": "bbcode.preview",
-          "group": "navigation",
+          "group": "navigation@1",
+          "when": "editorLangId == bbcode && !notebookEditorFocused"
+        },
+        {
+          "command": "bbcode.reopenAsPreview",
+          "group": "navigation@2",
+          "when": "activeEditor == workbench.editors.files.textFileEditor && resourceLangId == bbcode && !notebookEditorFocused"
+        },
+        {
+          "command": "bbcode.reopenAsSource",
+          "group": "navigation@2",
+          "when": "activeCustomEditorId == 'bbcode.preview.editor'"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "bbcode.preview",
           "when": "editorLangId == bbcode"
+        },
+        {
+          "command": "bbcode.reopenAsPreview",
+          "when": "editorLangId == bbcode"
+        },
+        {
+          "command": "bbcode.reopenAsSource",
+          "when": "activeCustomEditorId == 'bbcode.preview.editor'"
+        },
+        {
+          "command": "bbcode.togglePreview",
+          "when": "editorLangId == bbcode || activeCustomEditorId == 'bbcode.preview.editor'"
         }
       ]
     }

@@ -1,42 +1,48 @@
-# bbcode
+# BBCode
 
-Extensión de Visual Studio Code para dar soporte básico a archivos BBCode con resaltado de sintaxis y pares de caracteres automáticos.
+> Maintained by [Gabriel Andreescu](https://github.com/gabriel-andreescu), based on [chijure's BBCode extension](https://github.com/chijure/BBCode-Code).
 
-## Características
+A Visual Studio Code extension for editing BBCode files, with syntax highlighting, automatic bracket pairing, and a live preview.
 
-- Resaltado de etiquetas BBCode, atributos y cierres usando el grammar `source.bbcode`.
-- Registro de idioma `BBCode`/`bbcode` con extensión `.bbcode`.
-- Pares automáticos para corchetes `[]` y comillas dobles, más bracket matching en los documentos.
-- Configuración de lenguaje con soporte para plegado y comentarios estilo `//` o `/* */` cuando sea necesario.
-- Botón de vista previa en la barra del editor para ver el BBCode renderizado en un panel al lado.
+## Features
 
-## Requisitos
+- Syntax highlighting for BBCode tags, attributes, and closing tags.
+- Automatic language detection for `.bbcode` files.
+- Bracket matching and automatic pairing for square brackets and double quotes.
+- Code folding and line and block comment support.
+- A preview panel beside the editor that updates as you type.
 
-- Visual Studio Code `^1.75.0`.
+## Requirements
 
-## Instalación
+- Visual Studio Code 1.75.0 or later.
 
-1. Abre el Marketplace de VS Code y busca `bbcode`.
-2. Instala la extensión y recarga la ventana si es necesario.
-3. Abre cualquier archivo con extensión `.bbcode` y debería detectarse automáticamente.
+## Installation
 
-## Uso
+Install [BBCode by Gabriel Andreescu](https://marketplace.visualstudio.com/items?itemName=gabriel-andreescu.bbcode-support) from the Marketplace:
 
-- Crea o abre un archivo `.bbcode` para activar el resaltado.
-- Presiona el botón **BBCode: Vista previa** en la barra del editor (o usa el comando con el mismo nombre) para abrir el panel de vista previa.
-- Escribe tus etiquetas con atributos; la gramática reconoce aperturas, cierres y asignaciones para facilitar la lectura.
-- Usa los pares automáticos para corchetes y comillas al escribir etiquetas.
+```sh
+code --install-extension gabriel-andreescu.bbcode-support
+```
 
-## Configuración de la extensión
+## Usage
 
-Por ahora la extensión no expone configuraciones personalizables. Todo funciona con los valores por defecto incluidos.
+Open a `.bbcode` file and use the editor toolbar or command palette:
 
-## Problemas conocidos
+- **Open Preview to the Side** (`Ctrl+K V`) opens a preview beside the source.
+- **Open as Preview** replaces the current tab with its preview. Use `Ctrl+Shift+V` to switch between source and preview.
 
-- No se han reportado problemas todavía. Si encuentras algo, abre un issue en el repositorio.
+On macOS, use `Cmd` instead of `Ctrl`. Previews update as you edit the source.
 
-## Notas de versión
+## Preview rendering
 
-### 0.0.1
+`[size=1]` through `[size=7]` use a font-size scale from smallest to largest. Other numeric values and `[style size=...]` use pixels. Lists support `[*]` items with or without `[/*]` closing tags, `[li]` items, and nested lists.
 
-Versión inicial con soporte de lenguaje BBCode y resaltado de sintaxis.
+The preview uses your VS Code theme. Individual websites may render BBCode differently.
+
+## Development
+
+Run `npm test` with Node.js 18 or later to test the renderer. To test the extension in VS Code, open this project and press F5.
+
+Package a local build with `npx @vscode/vsce package`.
+
+Report problems in the [issue tracker](https://github.com/gabriel-andreescu/BBCode-Code/issues). See the [changelog](CHANGELOG.md) for release notes.
